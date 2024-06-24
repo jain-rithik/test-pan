@@ -8,7 +8,7 @@ module.exports = {
     library: 'MyComponent',
     libraryTarget: 'umd',
     umdNamedDefine: true,
-    globalObject: 'this'
+    globalObject: 'globalThis',
   },
   module: {
     rules: [
