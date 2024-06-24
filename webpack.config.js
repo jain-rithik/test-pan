@@ -1,14 +1,14 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    library: 'MyComponent',
-    libraryTarget: 'umd',
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+    library: "MyComponent",
+    libraryTarget: "umd",
     umdNamedDefine: true,
-    globalObject: 'globalThis',
+    globalObject: "globalThis",
   },
   module: {
     rules: [
@@ -19,38 +19,29 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images/',
-              publicPath: '/images/'
-            }
-          }
-        ]
-      }
-    ]
+        test: /\.(png|jpe?g|gif)$/i,
+        type: "asset/inline",
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: [".js", ".jsx"],
   },
   externals: {
     react: {
-      commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'React',
-      root: 'React'
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "React",
+      root: "React",
     },
-    'react-dom': {
-      commonjs: 'react-dom',
-      commonjs2: 'react-dom',
-      amd: 'ReactDOM',
-      root: 'ReactDOM'
-    }
-  }
+    "react-dom": {
+      commonjs: "react-dom",
+      commonjs2: "react-dom",
+      amd: "ReactDOM",
+      root: "ReactDOM",
+    },
+  },
 };
